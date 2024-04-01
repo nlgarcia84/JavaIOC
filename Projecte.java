@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Projecte {
 
-	// Aqui les constants
+	// Aqui declarem les constants
 
 	// Simptomes
 
