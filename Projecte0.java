@@ -4,6 +4,8 @@ public class Projecte0 {
 
 	// Aqui declarem les constants
 
+	public static Boolean error = false;
+
 	// Límits
 
 	public static final int MIN_TIS = 100000;
@@ -260,6 +262,7 @@ public class Projecte0 {
 			}
 		}
 		System.out.println("Error");
+		error = true;
 
 	}
 
