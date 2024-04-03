@@ -4,6 +4,23 @@ public class Projecte0 {
 
 	// Aqui declarem les constants
 
+	// Límits
+
+	public static final int MIN_TIS = 100000;
+	public static final int MAX_TIS = 999999;
+
+	public static final int MIN_SIMPTOMA = 0;
+	public static final int MAX_SIMPTOMA = 3;
+
+	public static final int MIN_EXPLORACIO = 0;
+	public static final int MAX_EXPLORACIO = 3;
+
+	public static final int MIN_PRIORITAT = 0;
+	public static final int MAX_PRIORITAT = 5;
+
+	public static final int MIN_TEMP = 27;
+	public static final int MAX_TEMP = 45;
+
 	// Simptomes
 
 	public static final String DOLOR = "Dolor";
@@ -57,7 +74,7 @@ public class Projecte0 {
 		System.out.println("TIS (Tarjeta Individual Sanitària)");
 
 		TIS = entrada.nextInt();
-		if (TIS >= 100000 && TIS <= 999999) {
+		if (TIS >= MIN_TIS && TIS <= MAX_TIS) {
 
 			System.out.println("\nSímptoma?:");
 			System.out.println("  " + DOLOR + "(0)");
@@ -66,7 +83,11 @@ public class Projecte0 {
 			System.out.println("  " + CONFUSIO + "(3)");
 
 			numSimptoma = entrada.nextInt();
-			if (numSimptoma >= 0 && numSimptoma <= 3) {
+			if (numSimptoma >= MIN_SIMPTOMA && numSimptoma <= MAX_SIMPTOMA) {
+
+				// Inici del primer Switch per mostrar les exploracions en
+				// funció
+				// del símptoma
 
 				switch (numSimptoma) {
 
@@ -79,33 +100,31 @@ public class Projecte0 {
 						System.out.println("  " + MIGRANYA + "(3)");
 
 						numExploracio = entrada.nextInt();
-						if (numExploracio >= 0 && numExploracio <= 3) {
-							switch (numExploracio) {
 
-								case 0 :
+						switch (numExploracio) {
 
-									exploracio = TORACIC;
-									break;
+							case 0 :
 
-								case 1 :
+								exploracio = TORACIC;
+								break;
 
-									exploracio = ABDOMINAL;
-									break;
+							case 1 :
 
-								case 2 :
+								exploracio = ABDOMINAL;
+								break;
 
-									exploracio = CAP;
-									break;
+							case 2 :
 
-								case 3 :
+								exploracio = CAP;
+								break;
 
-									exploracio = MIGRANYA;
-									break;
-							}
+							case 3 :
 
-							break;
-
+								exploracio = MIGRANYA;
+								break;
 						}
+
+						break;
 
 					case 1 :
 						simptoma = LESIO_TRAUMATICA;
@@ -116,33 +135,31 @@ public class Projecte0 {
 						System.out.println("  " + CEREBRAL + "(3)");
 
 						numExploracio = entrada.nextInt();
-						if (numExploracio >= 0 && numExploracio <= 3) {
 
-							switch (numExploracio) {
+						switch (numExploracio) {
 
-								case 0 :
+							case 0 :
 
-									exploracio = OSSIA;
-									break;
+								exploracio = OSSIA;
+								break;
 
-								case 1 :
+							case 1 :
 
-									exploracio = BALA;
-									break;
+								exploracio = BALA;
+								break;
 
-								case 2 :
+							case 2 :
 
-									exploracio = CREMADA;
-									break;
+								exploracio = CREMADA;
+								break;
 
-								case 3 :
+							case 3 :
 
-									exploracio = CEREBRAL;
-									break;
-							}
-
-							break;
+								exploracio = CEREBRAL;
+								break;
 						}
+
+						break;
 
 					case 2 :
 						simptoma = FEBRE_ALTA;
@@ -153,33 +170,31 @@ public class Projecte0 {
 						System.out.println("  " + ALERGIA + "(3)");
 
 						numExploracio = entrada.nextInt();
-						if (numExploracio >= 0 && numExploracio <= 3) {
 
-							switch (numExploracio) {
+						switch (numExploracio) {
 
-								case 0 :
+							case 0 :
 
-									exploracio = PNEUMONIA;
-									break;
+								exploracio = PNEUMONIA;
+								break;
 
-								case 1 :
+							case 1 :
 
-									exploracio = MENINGITIS;
-									break;
+								exploracio = MENINGITIS;
+								break;
 
-								case 2 :
+							case 2 :
 
-									exploracio = INFECCIO;
-									break;
+								exploracio = INFECCIO;
+								break;
 
-								case 3 :
+							case 3 :
 
-									exploracio = ALERGIA;
-									break;
-							}
-
-							break;
+								exploracio = ALERGIA;
+								break;
 						}
+
+						break;
 
 					case 3 :
 						simptoma = CONFUSIO;
@@ -191,49 +206,60 @@ public class Projecte0 {
 						System.out.println("  " + HIPOGLUCEMIA + "(3)");
 
 						numExploracio = entrada.nextInt();
-						if (numExploracio >= 0 && numExploracio <= 3) {
 
-							switch (numExploracio) {
+						switch (numExploracio) {
 
-								case 0 :
+							case 0 :
 
-									exploracio = INTOXICACIO;
-									break;
+								exploracio = INTOXICACIO;
+								break;
 
-								case 1 :
+							case 1 :
 
-									exploracio = DESHIDRATACIO;
-									break;
+								exploracio = DESHIDRATACIO;
+								break;
 
-								case 2 :
+							case 2 :
 
-									exploracio = ACCIDENT_CV;
-									break;
+								exploracio = ACCIDENT_CV;
+								break;
 
-								case 3 :
+							case 3 :
 
-									exploracio = HIPOGLUCEMIA;
-									break;
-							}
-
-							break;
+								exploracio = HIPOGLUCEMIA;
+								break;
 						}
 
-				}
+						break;
 
-				System.out.println("Nivell de prioritat?:");
-				nivellPrioritat = entrada.nextInt();
-				if (nivellPrioritat >= 0 && nivellPrioritat <= 5) {
-					System.out.println("Temperatura actual?");
-					temperaturaActual = entrada.nextInt();
-					if (temperaturaActual >= 27 && temperaturaActual <= 45) {
-						System.out.print("TIS\n" + TIS);
+				}; // Final del switch
+
+				if (numExploracio >= MIN_EXPLORACIO
+						&& numExploracio <= MAX_EXPLORACIO) {
+					System.out.println("Nivell de prioritat?:");
+					nivellPrioritat = entrada.nextInt();
+
+					if (nivellPrioritat >= MIN_PRIORITAT
+							&& nivellPrioritat <= MAX_PRIORITAT) {
+
+						System.out.println("Temperatura actual?");
+						temperaturaActual = entrada.nextInt();
+
+						if (temperaturaActual >= MIN_TEMP
+								&& temperaturaActual <= MAX_TEMP) {
+
+							System.out.printf("%-8s %-25s %-35s %-15s %-10s",
+									"TIS", "Símptoma", "Exploració",
+									"Nivell prioritat", "Temperatura actual\n");
+							System.out.printf("%-8s %-25s %-35s %-16s %-12s",
+									TIS, simptoma, exploracio, nivellPrioritat,
+									temperaturaActual);
+						}
 					}
 				}
-
-			} // Acaba segon if
-
-		} // Acaba primer if
+			}
+		}
+		System.out.println("Error");
 
 	}
 
