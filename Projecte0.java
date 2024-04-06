@@ -267,6 +267,10 @@ public class Projecte0 {
 					System.out.println("Error");
 					error = true;
 				}
+			} else {
+
+				System.out.println("Error");
+				error = true;
 			}
 		} else {
 
