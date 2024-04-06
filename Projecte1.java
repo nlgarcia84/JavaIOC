@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Projecte {
+public class Projecte1 {
 
 	// Aqui declarem les constants
 
