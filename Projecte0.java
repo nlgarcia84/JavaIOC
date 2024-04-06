@@ -4,6 +4,8 @@ public class Projecte0 {
 
 	// Aqui declarem les constants
 
+	public static boolean numSencer;
+
 	// Límits
 
 	public static final int MIN_TIS = 100000;
@@ -73,11 +75,12 @@ public class Projecte0 {
 
 		System.out.println("TIS (Tarjeta Individual Sanitària)");
 
-		boolean numSencer = entrada.hasNextInt();
+		numSencer = entrada.hasNextInt();
 
 		if (numSencer) {
 
 			TIS = entrada.nextInt();
+
 			if (TIS >= MIN_TIS && TIS <= MAX_TIS) {
 
 				System.out.println("\nSímptoma?:");
@@ -86,204 +89,225 @@ public class Projecte0 {
 				System.out.println("  " + FEBRE_ALTA + "(2)");
 				System.out.println("  " + CONFUSIO + "(3)");
 
-				numSimptoma = entrada.nextInt();
-				if (numSimptoma >= MIN_SIMPTOMA
-						&& numSimptoma <= MAX_SIMPTOMA) {
+				numSencer = entrada.hasNextInt();
 
-					// Inici del primer Switch per mostrar les exploracions en
-					// funció
-					// del símptoma
+				if (numSencer) {
 
-					switch (numSimptoma) {
+					numSimptoma = entrada.nextInt();
 
-						case 0 :
-							simptoma = DOLOR;
-							System.out.println("\nExploració?:");
-							System.out.println("  " + TORACIC + "(0)");
-							System.out.println("  " + ABDOMINAL + "(1)");
-							System.out.println("  " + CAP + "(2)");
-							System.out.println("  " + MIGRANYA + "(3)");
+					if (numSimptoma >= MIN_SIMPTOMA
+							&& numSimptoma <= MAX_SIMPTOMA) {
 
-							numExploracio = entrada.nextInt();
+						// Inici del primer Switch per mostrar les exploracions
+						// en
+						// funció
+						// del símptoma
 
-							switch (numExploracio) {
+						switch (numSimptoma) {
 
-								case 0 :
+							case 0 :
+								simptoma = DOLOR;
+								System.out.println("\nExploració?:");
+								System.out.println("  " + TORACIC + "(0)");
+								System.out.println("  " + ABDOMINAL + "(1)");
+								System.out.println("  " + CAP + "(2)");
+								System.out.println("  " + MIGRANYA + "(3)");
 
-									exploracio = TORACIC;
-									break;
+								numSencer = entrada.hasNextInt();
 
-								case 1 :
+								if (numSencer) {
 
-									exploracio = ABDOMINAL;
-									break;
+									numExploracio = entrada.nextInt();
 
-								case 2 :
+									switch (numExploracio) {
 
-									exploracio = CAP;
-									break;
+										case 0 :
 
-								case 3 :
+											exploracio = TORACIC;
+											break;
 
-									exploracio = MIGRANYA;
-									break;
-							}
+										case 1 :
 
-							break;
+											exploracio = ABDOMINAL;
+											break;
 
-						case 1 :
-							simptoma = LESIO_TRAUMATICA;
-							System.out.println("\nExploració?:");
-							System.out.println("  " + OSSIA + "(0)");
-							System.out.println("  " + BALA + "(1)");
-							System.out.println("  " + CREMADA + "(2)");
-							System.out.println("  " + CEREBRAL + "(3)");
+										case 2 :
 
-							numExploracio = entrada.nextInt();
+											exploracio = CAP;
+											break;
 
-							switch (numExploracio) {
+										case 3 :
 
-								case 0 :
+											exploracio = MIGRANYA;
+											break;
+									}
+								} else {
+									System.out.println("Error de dades");
+								}
 
-									exploracio = OSSIA;
-									break;
+								break;
 
-								case 1 :
+							case 1 :
+								simptoma = LESIO_TRAUMATICA;
+								System.out.println("\nExploració?:");
+								System.out.println("  " + OSSIA + "(0)");
+								System.out.println("  " + BALA + "(1)");
+								System.out.println("  " + CREMADA + "(2)");
+								System.out.println("  " + CEREBRAL + "(3)");
 
-									exploracio = BALA;
-									break;
+								numExploracio = entrada.nextInt();
 
-								case 2 :
+								switch (numExploracio) {
 
-									exploracio = CREMADA;
-									break;
+									case 0 :
 
-								case 3 :
+										exploracio = OSSIA;
+										break;
 
-									exploracio = CEREBRAL;
-									break;
-							}
+									case 1 :
 
-							break;
+										exploracio = BALA;
+										break;
 
-						case 2 :
-							simptoma = FEBRE_ALTA;
-							System.out.println("\nExploració?:");
-							System.out.println("  " + PNEUMONIA + "(0)");
-							System.out.println("  " + MENINGITIS + "(1)");
-							System.out.println("  " + INFECCIO + "(2)");
-							System.out.println("  " + ALERGIA + "(3)");
+									case 2 :
 
-							numExploracio = entrada.nextInt();
+										exploracio = CREMADA;
+										break;
 
-							switch (numExploracio) {
+									case 3 :
 
-								case 0 :
+										exploracio = CEREBRAL;
+										break;
+								}
 
-									exploracio = PNEUMONIA;
-									break;
+								break;
 
-								case 1 :
+							case 2 :
+								simptoma = FEBRE_ALTA;
+								System.out.println("\nExploració?:");
+								System.out.println("  " + PNEUMONIA + "(0)");
+								System.out.println("  " + MENINGITIS + "(1)");
+								System.out.println("  " + INFECCIO + "(2)");
+								System.out.println("  " + ALERGIA + "(3)");
 
-									exploracio = MENINGITIS;
-									break;
+								numExploracio = entrada.nextInt();
 
-								case 2 :
+								switch (numExploracio) {
 
-									exploracio = INFECCIO;
-									break;
+									case 0 :
 
-								case 3 :
+										exploracio = PNEUMONIA;
+										break;
 
-									exploracio = ALERGIA;
-									break;
-							}
+									case 1 :
 
-							break;
+										exploracio = MENINGITIS;
+										break;
 
-						case 3 :
-							simptoma = CONFUSIO;
+									case 2 :
 
-							System.out.println("\nExploració?:");
-							System.out.println("  " + INTOXICACIO + "(0)");
-							System.out.println("  " + DESHIDRATACIO + "(1)");
-							System.out.println("  " + ACCIDENT_CV + "(2)");
-							System.out.println("  " + HIPOGLUCEMIA + "(3)");
+										exploracio = INFECCIO;
+										break;
 
-							numExploracio = entrada.nextInt();
+									case 3 :
 
-							switch (numExploracio) {
+										exploracio = ALERGIA;
+										break;
+								}
 
-								case 0 :
+								break;
 
-									exploracio = INTOXICACIO;
-									break;
+							case 3 :
+								simptoma = CONFUSIO;
 
-								case 1 :
+								System.out.println("\nExploració?:");
+								System.out.println("  " + INTOXICACIO + "(0)");
+								System.out
+										.println("  " + DESHIDRATACIO + "(1)");
+								System.out.println("  " + ACCIDENT_CV + "(2)");
+								System.out.println("  " + HIPOGLUCEMIA + "(3)");
 
-									exploracio = DESHIDRATACIO;
-									break;
+								numExploracio = entrada.nextInt();
 
-								case 2 :
+								switch (numExploracio) {
 
-									exploracio = ACCIDENT_CV;
-									break;
+									case 0 :
 
-								case 3 :
+										exploracio = INTOXICACIO;
+										break;
 
-									exploracio = HIPOGLUCEMIA;
-									break;
-							}
+									case 1 :
 
-							break;
+										exploracio = DESHIDRATACIO;
+										break;
 
-					}; // Final del switch
+									case 2 :
 
-					if (numExploracio >= MIN_EXPLORACIO
-							&& numExploracio <= MAX_EXPLORACIO) {
-						System.out.println("Nivell de prioritat?:");
-						nivellPrioritat = entrada.nextInt();
+										exploracio = ACCIDENT_CV;
+										break;
 
-						if (nivellPrioritat >= MIN_PRIORITAT
-								&& nivellPrioritat <= MAX_PRIORITAT) {
+									case 3 :
 
-							System.out.println("Temperatura actual?");
-							temperaturaActual = entrada.nextInt();
+										exploracio = HIPOGLUCEMIA;
+										break;
+								}
 
-							if (temperaturaActual >= MIN_TEMP
-									&& temperaturaActual <= MAX_TEMP) {
+								break;
 
-								System.out.printf(
-										"%-8s %-25s %-35s %-15s %-10s", "TIS",
-										"Símptoma", "Exploració",
-										"Nivell prioritat",
-										"Temperatura actual\n");
-								System.out.printf(
-										"%-8s %-25s %-35s %-16s %-12s", TIS,
-										simptoma, exploracio, nivellPrioritat,
-										temperaturaActual);
+						}
+
+						if (numExploracio >= MIN_EXPLORACIO
+								&& numExploracio <= MAX_EXPLORACIO) {
+							System.out.println("Nivell de prioritat?:");
+							nivellPrioritat = entrada.nextInt();
+
+							if (nivellPrioritat >= MIN_PRIORITAT
+									&& nivellPrioritat <= MAX_PRIORITAT) {
+
+								System.out.println("Temperatura actual?");
+								temperaturaActual = entrada.nextInt();
+
+								if (temperaturaActual >= MIN_TEMP
+										&& temperaturaActual <= MAX_TEMP) {
+
+									System.out.printf(
+											"%-8s %-25s %-35s %-15s %-10s",
+											"TIS", "Símptoma", "Exploració",
+											"Nivell prioritat",
+											"Temperatura actual\n");
+									System.out.printf(
+											"%-8s %-25s %-35s %-16s %-12s", TIS,
+											simptoma, exploracio,
+											nivellPrioritat, temperaturaActual);
+								} else {
+
+									System.out.println("Error en dades");
+								}
 							} else {
 
-								System.out.println("Error, fora de rang");
+								System.out.println("Error en dades");
 							}
 						} else {
 
-							System.out.println("Error, fora de rang");
+							System.out.println("Error en dades");
 						}
+
 					} else {
 
-						System.out.println("Error, fora de rang");
+						System.out.println("Error en dades");
+
 					}
 				} else {
-
-					System.out.println("Error, fora de rang");
+					System.out.println("Error en dades");
 				}
+
 			} else {
 
-				System.out.println("Error, fora de rang");
+				System.out.println("Error en dades");
 			}
+
 		} else {
-			System.out.println("Error, no es sencer");
+			System.out.println("Error en dades");
 		}
 
 	}
