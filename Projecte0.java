@@ -256,13 +256,23 @@ public class Projecte0 {
 							System.out.printf("%-8s %-25s %-35s %-16s %-12s",
 									TIS, simptoma, exploracio, nivellPrioritat,
 									temperaturaActual);
+						} else {
+
+							System.out.println("Error");
+							error = true;
 						}
 					}
+				} else {
+
+					System.out.println("Error");
+					error = true;
 				}
 			}
+		} else {
+
+			System.out.println("Error");
+			error = true;
 		}
-		System.out.println("Error");
-		error = true;
 
 	}
 
