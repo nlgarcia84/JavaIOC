@@ -117,32 +117,31 @@ public class Projecte0 {
 
 								if (numSencer) {
 
-									numExploracio = entrada.nextInt();
+								}
 
-									switch (numExploracio) {
+								numExploracio = entrada.nextInt();
 
-										case 0 :
+								switch (numExploracio) {
 
-											exploracio = TORACIC;
-											break;
+									case 0 :
 
-										case 1 :
+										exploracio = TORACIC;
+										break;
 
-											exploracio = ABDOMINAL;
-											break;
+									case 1 :
 
-										case 2 :
+										exploracio = ABDOMINAL;
+										break;
 
-											exploracio = CAP;
-											break;
+									case 2 :
 
-										case 3 :
+										exploracio = CAP;
+										break;
 
-											exploracio = MIGRANYA;
-											break;
-									}
-								} else {
-									System.out.println("Error de dades");
+									case 3 :
+
+										exploracio = MIGRANYA;
+										break;
 								}
 
 								break;
