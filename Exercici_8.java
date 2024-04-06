@@ -44,6 +44,7 @@ public class Exercici_8 {
 				}
 			}
 		}
+		entrada.close();
 
 	}
 
