@@ -74,17 +74,18 @@ public class ProjecteSalut1 {
 
 		System.out.println("TIS?");
 
-		boolean isError = false; // variable per fer tracking dels errors (no
-									// sencer o fora de rang), la iniciem en
-									// FALSE
+		boolean isError = false; // // declarem i iniciem variable boolean per
+		// trackejar errors (no sencer o fora de
+		// rang)
 
-		isError = !entrada.hasNextInt(); // si no es sencer es registra...
+		isError = !entrada.hasNextInt(); // si no es sencer registra error
 
-		if (!isError) { // si no hi ha errors, seguim...
+		if (!isError) { // si es sencer seguim
 			TIS = entrada.nextInt();
-			isError = TIS < MIN_TIS || TIS > MAX_TIS;
+			isError = TIS < MIN_TIS || TIS > MAX_TIS; // si está fora del rang
+														// es registra error
 
-			if (!isError) { // si no hi ha errors seguim...
+			if (!isError) { // si es trova dins del rang seguim
 				System.out.println("\nSímptoma?:");
 				System.out.println("  " + DOLOR + "(0)");
 				System.out.println("  " + LESIO_TRAUMATICA + "(1)");
@@ -93,13 +94,13 @@ public class ProjecteSalut1 {
 				isError = !entrada.hasNextInt();
 			}
 
-			if (!isError) {
+			if (!isError) { // si es sencer seguim
 				numSimptoma = entrada.nextInt();
 				isError = numSimptoma < MIN_SIMPTOMA
 						|| numSimptoma > MAX_SIMPTOMA;
 			}
 
-			if (!isError) {
+			if (!isError) { // si es trova dins del rang seguim
 				System.out.println("\nExploració?:");
 				switch (numSimptoma) {
 
@@ -142,14 +143,14 @@ public class ProjecteSalut1 {
 				isError = !entrada.hasNextInt();
 			}
 
-			if (!isError) {
+			if (!isError) { // si es sencer pasem a comprobar el rang
 				numExploracio = entrada.nextInt();
 				isError = numExploracio < MIN_EXPLORACIO
 						|| numExploracio > MAX_EXPLORACIO;
 
 			}
 
-			if (!isError) {
+			if (!isError) { // si esta dins del rang seguim
 
 				switch (numSimptoma) {
 					case 0 :
@@ -230,18 +231,18 @@ public class ProjecteSalut1 {
 				isError = !entrada.hasNextInt();
 			}
 
-			if (!isError) {
+			if (!isError) { // si es sencer seguim
 				nivellPrioritat = entrada.nextInt();
 				isError = nivellPrioritat < MIN_PRIORITAT
 						|| nivellPrioritat > MAX_PRIORITAT;
 			}
 
-			if (!isError) {
+			if (!isError) { // si esta dins del rang seguim
 				System.out.println("Temperatura actual?");
 				isError = !entrada.hasNextInt();
 			}
 
-			if (!isError) {
+			if (!isError) { // si es sencer seguim
 				temperaturaActual = entrada.nextInt();
 				isError = temperaturaActual < MIN_TEMP
 						|| temperaturaActual > MAX_TEMP;
@@ -249,8 +250,11 @@ public class ProjecteSalut1 {
 			}
 
 			if (isError) {
-				System.out.println("Error de dades");
-			} else {
+				System.out.println("Error de dades"); // S'ha detectat error ya
+														// sigui perque no es
+														// sencer o está fora de
+														// rang
+			} else { // aqui suposem que está dintre del rang
 				System.out.printf("%-8s %-25s %-35s %-15s %-10s", "TIS",
 						"Símptoma", "Exploració", "Nivell prioritat",
 						"Temperatura actual\n");
