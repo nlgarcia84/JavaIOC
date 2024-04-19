@@ -68,192 +68,226 @@ public class ProjecteSalut1 {
 	public static int nivellPrioritat;
 	public static int temperaturaActual;
 
+	public static boolean isError = false;
+	public static int intentsFets = 0;
+
 	public static void main(String[] args) {
 
 		Scanner entrada = new Scanner(System.in);
 
-		System.out.println("TIS?");
+		do {
+			intentsFets++;
+			// Demanem TIS
+			System.out.println("Introdueixi el seu TIS si us plau.");
 
-		boolean isError = false; // // declarem i iniciem variable boolean per
-		// trackejar errors (no sencer o fora de
-		// rang)
+			isError = !entrada.hasNextInt(); // si no es sencer registra error
 
-		isError = !entrada.hasNextInt(); // si no es sencer registra error
+			if (!isError) { // OK es sencer!
+				TIS = entrada.nextInt(); // Guardem
+				isError = TIS < MIN_TIS || TIS > MAX_TIS; // si está fora
+															// del
+															// rang
+															// es registra
+															// error
 
-		if (!isError) { // si es sencer seguim
-			TIS = entrada.nextInt();
-			isError = TIS < MIN_TIS || TIS > MAX_TIS; // si está fora del rang
-														// es registra error
+				if (!isError) {
+					intentsFets = 0;
+					do {
+						intentsFets++;
+						System.out.println("\nSímptoma?:");
+						System.out.println("  " + DOLOR + "(0)");
+						System.out.println("  " + LESIO_TRAUMATICA + "(1)");
+						System.out.println("  " + FEBRE_ALTA + "(2)");
+						System.out.println("  " + CONFUSIO + "(3)");
+						isError = !entrada.hasNextInt();
+						if (!isError) { // si es sencer seguim
+							numSimptoma = entrada.nextInt();
+							isError = numSimptoma < MIN_SIMPTOMA
+									|| numSimptoma > MAX_SIMPTOMA;
+						}
+						if (isError) {
+							System.out.println("Error de dades.");
+							entrada.nextLine();
+						}
+					} while (isError && intentsFets < 3);
 
-			if (!isError) { // si es trova dins del rang seguim
-				System.out.println("\nSímptoma?:");
-				System.out.println("  " + DOLOR + "(0)");
-				System.out.println("  " + LESIO_TRAUMATICA + "(1)");
-				System.out.println("  " + FEBRE_ALTA + "(2)");
-				System.out.println("  " + CONFUSIO + "(3)");
-				isError = !entrada.hasNextInt();
-			}
+					if (!isError) {
+						intentsFets = 0;
+						do {
+							intentsFets++;
+							System.out.println("\nExploració?:");
+							switch (numSimptoma) {
 
-			if (!isError) { // si es sencer seguim
-				numSimptoma = entrada.nextInt();
-				isError = numSimptoma < MIN_SIMPTOMA
-						|| numSimptoma > MAX_SIMPTOMA;
-			}
+								case 0 :
+									simptoma = DOLOR;
+									System.out.println("  " + TORACIC + "(0)");
+									System.out
+											.println("  " + ABDOMINAL + "(1)");
+									System.out.println("  " + CAP + "(2)");
+									System.out.println("  " + MIGRANYA + "(3)");
 
-			if (!isError) { // si es trova dins del rang seguim
-				System.out.println("\nExploració?:");
-				switch (numSimptoma) {
+									break;
 
-					case 0 :
-						simptoma = DOLOR;
-						System.out.println("  " + TORACIC + "(0)");
-						System.out.println("  " + ABDOMINAL + "(1)");
-						System.out.println("  " + CAP + "(2)");
-						System.out.println("  " + MIGRANYA + "(3)");
+								case 1 :
+									simptoma = LESIO_TRAUMATICA;
+									System.out.println("  " + OSSIA + "(0)");
+									System.out.println("  " + BALA + "(1)");
+									System.out.println("  " + CREMADA + "(2)");
+									System.out.println("  " + CEREBRAL + "(3)");
 
-						break;
+									break;
 
-					case 1 :
-						simptoma = LESIO_TRAUMATICA;
-						System.out.println("  " + OSSIA + "(0)");
-						System.out.println("  " + BALA + "(1)");
-						System.out.println("  " + CREMADA + "(2)");
-						System.out.println("  " + CEREBRAL + "(3)");
+								case 2 :
+									simptoma = FEBRE_ALTA;
+									System.out
+											.println("  " + PNEUMONIA + "(0)");
+									System.out
+											.println("  " + MENINGITIS + "(1)");
+									System.out.println("  " + INFECCIO + "(2)");
+									System.out.println("  " + ALERGIA + "(3)");
 
-						break;
+									break;
 
-					case 2 :
-						simptoma = FEBRE_ALTA;
-						System.out.println("  " + PNEUMONIA + "(0)");
-						System.out.println("  " + MENINGITIS + "(1)");
-						System.out.println("  " + INFECCIO + "(2)");
-						System.out.println("  " + ALERGIA + "(3)");
+								case 3 :
+									simptoma = CONFUSIO;
+									System.out.println(
+											"  " + INTOXICACIO + "(0)");
+									System.out.println(
+											"  " + DESHIDRATACIO + "(1)");
+									System.out.println(
+											"  " + ACCIDENT_CV + "(2)");
+									System.out.println(
+											"  " + HIPOGLUCEMIA + "(3)");
 
-						break;
+									break;
+							}
+							isError = !entrada.hasNextInt();
+							if (!isError) { // si es sencer pasem a comprobar el
+											// rang
+								numExploracio = entrada.nextInt();
+								isError = numExploracio < MIN_EXPLORACIO
+										|| numExploracio > MAX_EXPLORACIO;
 
-					case 3 :
-						simptoma = CONFUSIO;
-						System.out.println("  " + INTOXICACIO + "(0)");
-						System.out.println("  " + DESHIDRATACIO + "(1)");
-						System.out.println("  " + ACCIDENT_CV + "(2)");
-						System.out.println("  " + HIPOGLUCEMIA + "(3)");
+							}
+							if (isError) {
+								System.out.println("Error de dades.");
+								entrada.nextLine();
+							}
+						} while (isError && intentsFets < 3);
+						if (!isError) {
 
-						break;
+							switch (numSimptoma) {
+								case 0 :
+									switch (numExploracio) {
+										case 0 :
+											exploracio = TORACIC;
+											break;
+										case 1 :
+											exploracio = ABDOMINAL;
+											break;
+										case 2 :
+											exploracio = CAP;
+											break;
+										case 3 :
+											exploracio = MIGRANYA;
+											break;
+									}
+									break;
+								case 1 :
+									switch (numExploracio) {
+										case 0 :
+											exploracio = OSSIA;
+											break;
+										case 1 :
+											exploracio = BALA;
+											break;
+										case 2 :
+											exploracio = CREMADA;
+											break;
+										case 3 :
+											exploracio = CEREBRAL;
+											break;
+									}
+
+									break;
+								case 2 :
+									switch (numExploracio) {
+										case 0 :
+											exploracio = PNEUMONIA;
+											break;
+
+										case 1 :
+											exploracio = MENINGITIS;
+											break;
+
+										case 2 :
+											exploracio = INFECCIO;
+											break;
+
+										case 3 :
+											exploracio = ALERGIA;
+											break;
+									}
+									break;
+								case 3 :
+									switch (numExploracio) {
+										case 0 :
+											exploracio = INTOXICACIO;
+											break;
+
+										case 1 :
+											exploracio = DESHIDRATACIO;
+											break;
+
+										case 2 :
+											exploracio = ACCIDENT_CV;
+											break;
+
+										case 3 :
+											exploracio = HIPOGLUCEMIA;
+											break;
+									}
+									break;
+
+							}
+							intentsFets = 0;
+							do {
+								intentsFets++;
+								System.out.println("Nivell de prioritat?:");
+								isError = !entrada.hasNextInt();
+								if (!isError) { // si es sencer seguim
+									nivellPrioritat = entrada.nextInt();
+									isError = nivellPrioritat < MIN_PRIORITAT
+											|| nivellPrioritat > MAX_PRIORITAT;
+								}
+								if (isError) {
+									System.out.println("Error de dades.");
+									entrada.nextLine();
+								}
+							} while (isError && intentsFets < 3);
+							if (!isError) {
+								intentsFets = 0;
+								do {
+									intentsFets++;
+									System.out.println("Temperatura actual?");
+									isError = !entrada.hasNextInt();
+									if (!isError) { // si es sencer seguim
+										temperaturaActual = entrada.nextInt();
+										isError = temperaturaActual < MIN_TEMP
+												|| temperaturaActual > MAX_TEMP;
+
+									}
+								} while (isError && intentsFets < 3);
+							}
+						}
+					}
 				}
-				isError = !entrada.hasNextInt();
-			}
-
-			if (!isError) { // si es sencer pasem a comprobar el rang
-				numExploracio = entrada.nextInt();
-				isError = numExploracio < MIN_EXPLORACIO
-						|| numExploracio > MAX_EXPLORACIO;
-
-			}
-
-			if (!isError) { // si esta dins del rang seguim
-
-				switch (numSimptoma) {
-					case 0 :
-						switch (numExploracio) {
-							case 0 :
-								exploracio = TORACIC;
-								break;
-							case 1 :
-								exploracio = ABDOMINAL;
-								break;
-							case 2 :
-								exploracio = CAP;
-								break;
-							case 3 :
-								exploracio = MIGRANYA;
-								break;
-						}
-						break;
-					case 1 :
-						switch (numExploracio) {
-							case 0 :
-								exploracio = OSSIA;
-								break;
-							case 1 :
-								exploracio = BALA;
-								break;
-							case 2 :
-								exploracio = CREMADA;
-								break;
-							case 3 :
-								exploracio = CEREBRAL;
-								break;
-						}
-
-						break;
-					case 2 :
-						switch (numExploracio) {
-							case 0 :
-								exploracio = PNEUMONIA;
-								break;
-
-							case 1 :
-								exploracio = MENINGITIS;
-								break;
-
-							case 2 :
-								exploracio = INFECCIO;
-								break;
-
-							case 3 :
-								exploracio = ALERGIA;
-								break;
-						}
-						break;
-					case 3 :
-						switch (numExploracio) {
-							case 0 :
-								exploracio = INTOXICACIO;
-								break;
-
-							case 1 :
-								exploracio = DESHIDRATACIO;
-								break;
-
-							case 2 :
-								exploracio = ACCIDENT_CV;
-								break;
-
-							case 3 :
-								exploracio = HIPOGLUCEMIA;
-								break;
-						}
-						break;
-
-				}
-
-				System.out.println("Nivell de prioritat?:");
-				isError = !entrada.hasNextInt();
-			}
-
-			if (!isError) { // si es sencer seguim
-				nivellPrioritat = entrada.nextInt();
-				isError = nivellPrioritat < MIN_PRIORITAT
-						|| nivellPrioritat > MAX_PRIORITAT;
-			}
-
-			if (!isError) { // si esta dins del rang seguim
-				System.out.println("Temperatura actual?");
-				isError = !entrada.hasNextInt();
-			}
-
-			if (!isError) { // si es sencer seguim
-				temperaturaActual = entrada.nextInt();
-				isError = temperaturaActual < MIN_TEMP
-						|| temperaturaActual > MAX_TEMP;
 
 			}
 
 			if (isError) {
-				System.out.println("Error de dades"); // S'ha detectat error ya
-														// sigui perque no es
-														// sencer o está fora de
-														// rang
+				System.out.println("Error de dades.");
+				entrada.nextLine();
 			} else { // aqui suposem que está dintre del rang
 				System.out.printf("%-8s %-25s %-35s %-15s %-10s", "TIS",
 						"Símptoma", "Exploració", "Nivell prioritat",
@@ -261,8 +295,6 @@ public class ProjecteSalut1 {
 				System.out.printf("%-8s %-25s %-35s %-16s %-12s", TIS, simptoma,
 						exploracio, nivellPrioritat, temperaturaActual);
 			}
-
-		}
-
+		} while (isError && intentsFets < 3);
 	}
 }
