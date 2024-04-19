@@ -81,12 +81,7 @@ public class ProjecteSalut1 {
 
 			if (!isError) { // OK es sencer!
 				TIS = entrada.nextInt(); // Guardem
-				isError = TIS < MIN_TIS || TIS > MAX_TIS; // si está fora
-															// del
-															// rang
-															// es registra
-															// error
-
+				isError = TIS < MIN_TIS || TIS > MAX_TIS;
 				if (!isError) {
 					intentsFets = 0;
 					do {
