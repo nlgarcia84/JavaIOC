@@ -106,7 +106,7 @@ public class ProjecteSalut1 {
 									|| numSimptoma > MAX_SIMPTOMA;
 						}
 						if (isError) {
-							System.out.println("Error de dades.");
+							System.out.println("Error en dades.");
 							entrada.nextLine();
 						}
 					} while (isError && intentsFets < 3);
@@ -170,7 +170,7 @@ public class ProjecteSalut1 {
 
 							}
 							if (isError) {
-								System.out.println("Error de dades.");
+								System.out.println("Error en dades.");
 								entrada.nextLine();
 							}
 						} while (isError && intentsFets < 3);
@@ -261,7 +261,7 @@ public class ProjecteSalut1 {
 											|| nivellPrioritat > MAX_PRIORITAT;
 								}
 								if (isError) {
-									System.out.println("Error de dades.");
+									System.out.println("Error en dades.");
 									entrada.nextLine();
 								}
 							} while (isError && intentsFets < 3);
@@ -277,6 +277,10 @@ public class ProjecteSalut1 {
 												|| temperaturaActual > MAX_TEMP;
 
 									}
+									if (isError) {
+										System.out.println("Error en dades.");
+										entrada.nextLine();
+									}
 								} while (isError && intentsFets < 3);
 							}
 						}
@@ -286,7 +290,7 @@ public class ProjecteSalut1 {
 			}
 
 			if (isError) {
-				System.out.println("Error de dades.");
+				System.out.println("Error en dades.");
 				entrada.nextLine();
 			} else { // aqui suposem que está dintre del rang
 				System.out.printf("%-8s %-25s %-35s %-15s %-10s", "TIS",
@@ -294,7 +298,22 @@ public class ProjecteSalut1 {
 						"Temperatura actual\n");
 				System.out.printf("%-8s %-25s %-35s %-16s %-12s", TIS, simptoma,
 						exploracio, nivellPrioritat, temperaturaActual);
+				System.out.println();
+				System.out
+						.println("Vol introduir un altre pacient? Si(1),No(2)");
+				int respostaNouPacient = entrada.nextInt();
+				if (respostaNouPacient == 1) {
+					intentsFets = 0;
+					isError = true;
+
+				} else {
+					System.out.println("Gracies.");
+					isError = false;
+				}
+
 			}
+
 		} while (isError && intentsFets < 3);
+
 	}
 }
