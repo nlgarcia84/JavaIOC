@@ -2,10 +2,6 @@ import java.util.Scanner;
 
 public class ProjecteSalut1 {
 
-	// Aqui declarem les constants
-
-	public static boolean numSencer;
-
 	// Límits
 
 	public static final int MIN_TIS = 100000;
@@ -70,6 +66,7 @@ public class ProjecteSalut1 {
 
 	public static boolean isError = false;
 	public static int intentsFets = 0;
+	public static int numeroPacients = 1;
 
 	public static void main(String[] args) {
 
@@ -100,12 +97,13 @@ public class ProjecteSalut1 {
 						System.out.println("  " + FEBRE_ALTA + "(2)");
 						System.out.println("  " + CONFUSIO + "(3)");
 						isError = !entrada.hasNextInt();
+
 						if (!isError) { // si es sencer seguim
 							numSimptoma = entrada.nextInt();
 							isError = numSimptoma < MIN_SIMPTOMA
 									|| numSimptoma > MAX_SIMPTOMA;
 						}
-						if (isError) {
+						if (isError && intentsFets != 3) {
 							System.out.println("Error en dades.");
 							entrada.nextLine();
 						}
@@ -169,7 +167,7 @@ public class ProjecteSalut1 {
 										|| numExploracio > MAX_EXPLORACIO;
 
 							}
-							if (isError) {
+							if (isError && intentsFets != 3) {
 								System.out.println("Error en dades.");
 								entrada.nextLine();
 							}
@@ -253,14 +251,14 @@ public class ProjecteSalut1 {
 							intentsFets = 0;
 							do {
 								intentsFets++;
-								System.out.println("Nivell de prioritat?:");
+								System.out.println("\nNivell de prioritat?:");
 								isError = !entrada.hasNextInt();
 								if (!isError) { // si es sencer seguim
 									nivellPrioritat = entrada.nextInt();
 									isError = nivellPrioritat < MIN_PRIORITAT
 											|| nivellPrioritat > MAX_PRIORITAT;
 								}
-								if (isError) {
+								if (isError && intentsFets != 3) {
 									System.out.println("Error en dades.");
 									entrada.nextLine();
 								}
@@ -269,15 +267,16 @@ public class ProjecteSalut1 {
 								intentsFets = 0;
 								do {
 									intentsFets++;
-									System.out.println("Temperatura actual?");
+									System.out.println("\nTemperatura actual?");
 									isError = !entrada.hasNextInt();
+									System.out.println();
 									if (!isError) { // si es sencer seguim
 										temperaturaActual = entrada.nextInt();
 										isError = temperaturaActual < MIN_TEMP
 												|| temperaturaActual > MAX_TEMP;
 
 									}
-									if (isError) {
+									if (isError && intentsFets != 3) {
 										System.out.println("Error en dades.");
 										entrada.nextLine();
 									}
@@ -289,9 +288,13 @@ public class ProjecteSalut1 {
 
 			}
 
-			if (isError) {
+			if (isError && intentsFets != 3) {
 				System.out.println("Error en dades.");
 				entrada.nextLine();
+			} else if (isError && intentsFets == 3) {
+				System.out.println("Programa finalitzat per error en dades");
+				isError = false;
+
 			} else { // aqui suposem que está dintre del rang
 				System.out.printf("%-8s %-25s %-35s %-15s %-10s", "TIS",
 						"Símptoma", "Exploració", "Nivell prioritat",
@@ -299,15 +302,19 @@ public class ProjecteSalut1 {
 				System.out.printf("%-8s %-25s %-35s %-16s %-12s", TIS, simptoma,
 						exploracio, nivellPrioritat, temperaturaActual);
 				System.out.println();
-				System.out
-						.println("Vol introduir un altre pacient? Si(1),No(2)");
+				if (numeroPacients >= 2) {
+					System.out.println("\nS'han introduït " + numeroPacients
+							+ " registres de pacients");
+				}
+				System.out.println(
+						"\nVol introduir un altre pacient? Si(1),No(2)");
 				int respostaNouPacient = entrada.nextInt();
 				if (respostaNouPacient == 1) {
-					intentsFets = 0;
+					numeroPacients++;
 					isError = true;
 
 				} else {
-					System.out.println("Gracies.");
+					System.out.println("\nGracies.");
 					isError = false;
 				}
 
