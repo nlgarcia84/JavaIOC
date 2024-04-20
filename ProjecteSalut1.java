@@ -74,6 +74,7 @@ public class ProjecteSalut1 {
 		Scanner entrada = new Scanner(System.in);
 
 		do {
+			intentsFets = 0;
 			do {
 				intentsFets++;
 				// Demanem TIS
@@ -331,7 +332,12 @@ public class ProjecteSalut1 {
 			}
 
 		} while (nouPacient);
-		System.out.println("\nS'han introduït " + numeroPacients
-				+ " registres de pacients");
+		if (numeroPacients == 1) {
+			System.out.println("\nS'han introduït " + numeroPacients
+					+ " registre de pacients");
+		} else {
+			System.out.println("\nS'han introduït " + numeroPacients
+					+ " registres de pacients");
+		}
 	}
 }
