@@ -66,20 +66,21 @@ public class ProjecteSalut1 {
 
 	public static boolean isError = false;
 	public static int intentsFets = 0;
-	public static int numeroPacients = 1;
+	public static int numeroPacients = 0;
 
 	public static void main(String[] args) {
 
 		Scanner entrada = new Scanner(System.in);
 
 		do {
+			numeroPacients++;
 			intentsFets++;
 			// Demanem TIS
 			System.out.println("Introdueixi el seu TIS si us plau.");
 
 			isError = !entrada.hasNextInt(); // si no es sencer registra error
 
-			if (!isError) { // OK es sencer!
+			if (!isError) {
 				TIS = entrada.nextInt(); // Guardem
 				isError = TIS < MIN_TIS || TIS > MAX_TIS;
 				if (!isError) {
@@ -297,6 +298,10 @@ public class ProjecteSalut1 {
 				System.out.printf("%-8s %-25s %-35s %-16s %-12s", TIS, simptoma,
 						exploracio, nivellPrioritat, temperaturaActual);
 				System.out.println();
+				if (numeroPacients == 1) {
+					System.out.println("\nS'han introduït " + numeroPacients
+							+ " registre de pacients");
+				}
 				if (numeroPacients >= 2) {
 					System.out.println("\nS'han introduït " + numeroPacients
 							+ " registres de pacients");
@@ -305,7 +310,6 @@ public class ProjecteSalut1 {
 						"\nVol introduir un altre pacient? Si(1),No(2)");
 				int respostaNouPacient = entrada.nextInt();
 				if (respostaNouPacient == 1) {
-					numeroPacients++;
 					isError = true;
 
 				} else {
