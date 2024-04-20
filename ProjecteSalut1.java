@@ -66,6 +66,7 @@ public class ProjecteSalut1 {
 
 	public static boolean isError = false;
 	public static boolean nouPacient = false;
+	public static int respostaNouPacient;
 	public static int intentsFets = 0;
 	public static int numeroPacients = 0;
 
@@ -321,15 +322,25 @@ public class ProjecteSalut1 {
 
 			} while (isError && intentsFets < 3);
 
-			System.out.println("\nVol introduir un altre pacient? Si(1),No(2)");
-			int respostaNouPacient = entrada.nextInt();
-			if (respostaNouPacient == 1) {
-				nouPacient = true;
+			do {
+				System.out.println(
+						"\nVol introduir un altre pacient? Si(1),No(2)");
+				System.out.println();
 
-			} else if (respostaNouPacient == 2) {
+				if (!entrada.hasNextInt() && respostaNouPacient != 1
+						&& respostaNouPacient != 2) {
+					System.out.println("Error en dades.");
+					entrada.nextLine();
 
-				nouPacient = false;
-			}
+				} else if (respostaNouPacient == 1) {
+					nouPacient = true;
+
+				} else if (respostaNouPacient == 2) {
+
+					nouPacient = false;
+				}
+			} while (!entrada.hasNextInt() && respostaNouPacient != 1
+					&& respostaNouPacient != 2);
 
 		} while (nouPacient);
 		if (numeroPacients == 1) {
