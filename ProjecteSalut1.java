@@ -352,5 +352,5 @@ public class ProjecteSalut1 {
 			System.out.println("\nS'han introduït " + numeroPacients
 					+ " registres de pacients");
 		}
-	}
+	};
 }
