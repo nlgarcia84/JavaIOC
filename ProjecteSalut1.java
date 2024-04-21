@@ -331,11 +331,13 @@ public class ProjecteSalut1 {
 			}
 
 			respostaNouPacient = entrada.nextInt();
-			while (respostaNouPacient < 1 || respostaNouPacient > 2) {
-				System.out.println("Error en dades, torni a introduir");
-				entrada.next();
-			}
+			do {
 
+				if (respostaNouPacient != 1 && respostaNouPacient != 2) {
+					System.out.println("Error en dades, torni a introduir");
+					entrada.next();
+				}
+			} while (respostaNouPacient != 1 && respostaNouPacient != 2);
 			if (respostaNouPacient == 1) {
 				nouPacient = true;
 
@@ -343,7 +345,6 @@ public class ProjecteSalut1 {
 
 				nouPacient = false;
 			}
-
 		} while (nouPacient);
 		if (numeroPacients == 1) {
 			System.out.println("\nS'han introduït " + numeroPacients
