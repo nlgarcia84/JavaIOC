@@ -331,7 +331,7 @@ public class ProjecteSalut1 {
 			}
 
 			respostaNouPacient = entrada.nextInt();
-			while (respostaNouPacient != 1 || respostaNouPacient != 2) {
+			while (respostaNouPacient < 1 || respostaNouPacient > 2) {
 				System.out.println("Error en dades, torni a introduir");
 				entrada.next();
 			}
