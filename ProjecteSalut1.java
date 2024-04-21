@@ -322,25 +322,27 @@ public class ProjecteSalut1 {
 
 			} while (isError && intentsFets < 3);
 
-			do {
-				System.out.println(
-						"\nVol introduir un altre pacient? Si(1),No(2)");
-				System.out.println();
+			System.out.println("\nVol introduir un altre pacient? Si(1),No(2)");
+			System.out.println();
 
-				if (!entrada.hasNextInt() && respostaNouPacient != 1
-						&& respostaNouPacient != 2) {
-					System.out.println("Error en dades.");
-					entrada.nextLine();
+			while (!entrada.hasNextInt()) {
+				System.out.println("Error en dades, torni a introduir");
+				entrada.next();
+			}
 
-				} else if (respostaNouPacient == 1) {
-					nouPacient = true;
+			respostaNouPacient = entrada.nextInt();
+			while (respostaNouPacient < 1 || respostaNouPacient > 2) {
+				System.out.println("Error en dades, torni a introduir");
+				entrada.next();
+			}
 
-				} else if (respostaNouPacient == 2) {
+			if (respostaNouPacient == 1) {
+				nouPacient = true;
 
-					nouPacient = false;
-				}
-			} while (!entrada.hasNextInt() && respostaNouPacient != 1
-					&& respostaNouPacient != 2);
+			} else if (respostaNouPacient == 2) {
+
+				nouPacient = false;
+			}
 
 		} while (nouPacient);
 		if (numeroPacients == 1) {
