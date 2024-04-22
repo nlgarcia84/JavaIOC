@@ -65,7 +65,10 @@ public class ProjecteSalut1 {
 	public static int temperaturaActual;
 
 	public static boolean isError = false;
-	public static boolean nouPacient = true;
+
+	public static boolean nouPacient = false;
+	public static boolean respostaNPcorrecte = true;
+
 	public static int respostaNouPacient;
 	public static int intentsFets = 0;
 	public static int numeroPacients = 0;
@@ -323,32 +326,25 @@ public class ProjecteSalut1 {
 			} while (isError && intentsFets < 3);
 
 			System.out.println("\nVol introduir un altre pacient? Si(1),No(2)");
-
-			nouPacient = entrada.hasNextInt();
-
 			do {
-				if (nouPacient) {
-					// si es sencer
+				respostaNPcorrecte = entrada.hasNextInt();
+				if (respostaNPcorrecte) {
 					respostaNouPacient = entrada.nextInt();
-					// si es 1 pasem al segon bucle
 					if (respostaNouPacient == 1) {
 						nouPacient = true;
-					}
-					// si es 2 sortim de tots i acabem el programa
-					if (respostaNouPacient == 2) {
-						System.out.println("Gracies, fins aviat.0");
-						// diexa d'iterar, surt del bucle i dona el resum dels
-						// pacients registrats
+					} else if (respostaNouPacient == 2) {
 						nouPacient = false;
+					} else {
+						System.out.println("Torni a introduir");
+						respostaNPcorrecte = false;
 					}
-				} else if (!nouPacient && respostaNouPacient != 1
-						&& respostaNouPacient != 2) {
-					System.out.println("Resposa erronea.");
-					entrada.nextLine();
+				} else {
+					System.out.println("Torni a introduir");
+					entrada.next();
+					respostaNPcorrecte = false;
 				}
 
-			} while (nouPacient && respostaNouPacient != 1
-					&& respostaNouPacient != 2);
+			} while (!respostaNPcorrecte);
 
 		} while (nouPacient);
 		if (numeroPacients == 1) {
@@ -358,6 +354,5 @@ public class ProjecteSalut1 {
 			System.out.println("\nS'han introduït " + numeroPacients
 					+ " registres de pacients");
 		}
-
 	};
 }
