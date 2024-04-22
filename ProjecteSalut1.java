@@ -65,7 +65,7 @@ public class ProjecteSalut1 {
 	public static int temperaturaActual;
 
 	public static boolean isError = false;
-	public static boolean nouPacient = false;
+	public static boolean nouPacient = true;
 	public static int respostaNouPacient;
 	public static int intentsFets = 0;
 	public static int numeroPacients = 0;
@@ -323,28 +323,34 @@ public class ProjecteSalut1 {
 			} while (isError && intentsFets < 3);
 
 			System.out.println("\nVol introduir un altre pacient? Si(1),No(2)");
-			System.out.println();
 
-			while (!entrada.hasNextInt()) {
-				System.out.println("Error en dades, torni a introduir");
-				entrada.next();
-			}
+			nouPacient = entrada.hasNextInt();
 
-			respostaNouPacient = entrada.nextInt();
 			do {
-
-				if (respostaNouPacient != 1 && respostaNouPacient != 2) {
-					System.out.println("Error en dades, torni a introduir");
-					entrada.next();
+				numeroPacients = 0;
+				if (nouPacient) {
+					// si es sencer
+					respostaNouPacient = entrada.nextInt();
+					// si es 1 pasem al segon bucle
+					if (respostaNouPacient == 1) {
+						nouPacient = true;
+					}
+					// si es 2 sortim de tots i acabem el programa
+					if (respostaNouPacient == 2) {
+						System.out.println("Gracies, fins aviat.");
+						// diexa d'iterar, surt del bucle i dona el resum dels
+						// pacients registrats
+						nouPacient = false;
+					}
+					// si no es sencer, retorna error i espera un altre entrada
+				} else if (!nouPacient && respostaNouPacient != 1
+						&& respostaNouPacient != 2) {
+					System.out.println("dada incorrecta");
+					entrada.nextLine();
 				}
-			} while (respostaNouPacient != 1 && respostaNouPacient != 2);
-			if (respostaNouPacient == 1) {
-				nouPacient = true;
+			} while (!nouPacient && respostaNouPacient != 1
+					&& respostaNouPacient != 2);
 
-			} else if (respostaNouPacient == 2) {
-
-				nouPacient = false;
-			}
 		} while (nouPacient);
 		if (numeroPacients == 1) {
 			System.out.println("\nS'han introduït " + numeroPacients
@@ -353,5 +359,6 @@ public class ProjecteSalut1 {
 			System.out.println("\nS'han introduït " + numeroPacients
 					+ " registres de pacients");
 		}
+
 	};
 }
