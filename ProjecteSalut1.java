@@ -324,21 +324,31 @@ public class ProjecteSalut1 {
 				}
 
 			} while (isError && intentsFets < 3);
+			// demanem si es vol introduir nou pacient a la bdd
 
-			System.out.println("\nVol introduir un altre pacient? Si(1),No(2)");
+			System.out.println("\nVol introduir un altre pacient? Si(1),No(0)");
+			// es sencer?
 			do {
 				respostaNPcorrecte = entrada.hasNextInt();
 				if (respostaNPcorrecte) {
+					// si es sencer mirem si está dins el rang
 					respostaNouPacient = entrada.nextInt();
+					// si diu que si sortim del bucle i pasem a entrar dades
+					// tis, simptoma...
 					if (respostaNouPacient == 1) {
 						nouPacient = true;
-					} else if (respostaNouPacient == 2) {
+						// si diu que no pasem directament al print final del
+						// resumde pacients i tanquem el programa
+					} else if (respostaNouPacient == 0) {
 						nouPacient = false;
 					} else {
+						// si fica un altre número que no sigui ni 1 ni 0 li
+						// tornem a demanar
 						System.out.println("Torni a introduir");
 						respostaNPcorrecte = false;
 					}
 				} else {
+					// si fica un no sencer li tornem a demanar
 					System.out.println("Torni a introduir");
 					entrada.next();
 					respostaNPcorrecte = false;
@@ -347,6 +357,7 @@ public class ProjecteSalut1 {
 			} while (!respostaNPcorrecte);
 
 		} while (nouPacient);
+		// print del registre de pacients totals
 		if (numeroPacients == 1) {
 			System.out.println("\nS'han introduït " + numeroPacients
 					+ " registre de pacients");
