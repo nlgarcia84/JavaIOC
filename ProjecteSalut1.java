@@ -327,7 +327,6 @@ public class ProjecteSalut1 {
 			nouPacient = entrada.hasNextInt();
 
 			do {
-				numeroPacients = 0;
 				if (nouPacient) {
 					// si es sencer
 					respostaNouPacient = entrada.nextInt();
@@ -337,18 +336,18 @@ public class ProjecteSalut1 {
 					}
 					// si es 2 sortim de tots i acabem el programa
 					if (respostaNouPacient == 2) {
-						System.out.println("Gracies, fins aviat.");
+						System.out.println("Gracies, fins aviat.0");
 						// diexa d'iterar, surt del bucle i dona el resum dels
 						// pacients registrats
 						nouPacient = false;
 					}
-					// si no es sencer, retorna error i espera un altre entrada
 				} else if (!nouPacient && respostaNouPacient != 1
 						&& respostaNouPacient != 2) {
-					System.out.println("dada incorrecta");
+					System.out.println("Resposa erronea.");
 					entrada.nextLine();
 				}
-			} while (!nouPacient && respostaNouPacient != 1
+
+			} while (nouPacient && respostaNouPacient != 1
 					&& respostaNouPacient != 2);
 
 		} while (nouPacient);
