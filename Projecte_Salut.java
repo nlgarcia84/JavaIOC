@@ -496,31 +496,40 @@ public class Projecte_Salut {
                 System.out.printf("%-7s %-19s %-19s %-19s %-19s", "------",
                         "------------------", "------------------", "------------------",
                         "------------------\n");
-                for (int i = 0; i < numeroPacients; i++) {
-                    if (llistaSimptoma[i] == 0) {
-                        System.out.printf("%-8d", llistaTIS[i]);
-                        System.out.printf("%-20s", DOLOR);
-                        switch (llistaExploracio[i]) {
-                            case 0:
-                                System.out.printf("%-36s", TORACIC);
-                                break;
-                            case 1:
-                                System.out.printf("%-36s", ABDOMINAL);
-                                break;
-                            case 2:
-                                System.out.printf("%-36s", CAP);
-                                break;
-                            case 3:
-                                System.out.printf("%-36s", MIGRANYA);
-                                break;
+                for (int i = 0; i < llistaPrioritat.length -1; i++) {
+                    for (int j = i + 1; j < llistaPrioritat.length; j++) {
+                        if (llistaPrioritat[i] < llistaPrioritat [j]) {
+                            int canvi = llistaPrioritat[i];
+                            llistaPrioritat[i] = llistaPrioritat[j];
+                            llistaPrioritat[j] = canvi;
                         }
-                        System.out.printf("%-20d", llistaPrioritat[i]);
-                        System.out.printf("%-20d", llistaTemperatura[i]);
-                        System.out.println();
                     }
-
-
                 }
+                for (int i = 0; i < numeroPacients; i++) {
+                        if (llistaSimptoma[i] == 0) {
+                            System.out.printf("%-8d", llistaTIS[i]);
+                            System.out.printf("%-20s", DOLOR);
+                            switch (llistaExploracio[i]) {
+                                case 0:
+                                    System.out.printf("%-36s", TORACIC);
+                                    break;
+                                case 1:
+                                    System.out.printf("%-36s", ABDOMINAL);
+                                    break;
+                                case 2:
+                                    System.out.printf("%-36s", CAP);
+                                    break;
+                                case 3:
+                                    System.out.printf("%-36s", MIGRANYA);
+                                    break;
+                            }
+
+                            System.out.printf("%-20d", llistaPrioritat[i]);
+                            System.out.printf("%-20d", llistaTemperatura[i]);
+                            System.out.println();
+                        }
+
+                    }
             } else if (numSimptoma == 1) {
                 System.out.println("Dades de pacients amb símptoma: " + LESIO_TRAUMATICA);
                 System.out.printf("%-7s %-19s %-19s %-19s %-19s", "TIS",
@@ -529,6 +538,15 @@ public class Projecte_Salut {
                 System.out.printf("%-7s %-19s %-19s %-19s %-19s", "------",
                         "------------------", "------------------", "------------------",
                         "------------------\n");
+                for (int i = 0; i < llistaPrioritat.length -1; i++) {
+                    for (int j = i + 1; j < llistaPrioritat.length; j++) {
+                        if (llistaPrioritat[i] < llistaPrioritat [j]) {
+                            int canvi = llistaPrioritat[i];
+                            llistaPrioritat[i] = llistaPrioritat[j];
+                            llistaPrioritat[j] = canvi;
+                        }
+                    }
+                }
                 for (int i = 0; i < numeroPacients; i++) {
                     if (llistaSimptoma[i] == 1) {
                         System.out.printf("%-8d", llistaTIS[i]);
@@ -553,6 +571,7 @@ public class Projecte_Salut {
                     }
 
                 }
+
             } else if (numSimptoma == 2) {
                 System.out.println("Dades de pacients amb símptoma: " + FEBRE_ALTA);
                 System.out.printf("%-7s %-19s %-19s %-19s %-19s", "TIS",
@@ -561,30 +580,39 @@ public class Projecte_Salut {
                 System.out.printf("%-7s %-19s %-19s %-19s %-19s", "------",
                         "------------------", "------------------", "------------------",
                         "------------------\n");
-                for (int i = 0; i < numeroPacients; i++) {
-                    if (llistaSimptoma[i] == 2) {
-                        System.out.printf("%-8d", llistaTIS[i]);
-                        System.out.printf("%-20s", FEBRE_ALTA);
-                        switch (llistaExploracio[i]) {
-                            case 0:
-                                System.out.printf("%-36s", PNEUMONIA);
-                                break;
-                            case 1:
-                                System.out.printf("%-36s", MENINGITIS);
-                                break;
-                            case 2:
-                                System.out.printf("%-36s", INFECCIO);
-                                break;
-                            case 3:
-                                System.out.printf("%-36s", ALERGIA);
-                                break;
+                for (int i = 0; i < llistaPrioritat.length -1; i++) {
+                    for (int j = i + 1; j < llistaPrioritat.length; j++) {
+                        if (llistaPrioritat[i] < llistaPrioritat [j]) {
+                            int canvi = llistaPrioritat[i];
+                            llistaPrioritat[i] = llistaPrioritat[j];
+                            llistaPrioritat[j] = canvi;
                         }
-                        System.out.printf("%-20d", llistaPrioritat[i]);
-                        System.out.printf("%-20d", llistaTemperatura[i]);
-                        System.out.println();
                     }
-
                 }
+                for (int i = 0; i < numeroPacients; i++) {
+                        if (llistaSimptoma[i] == 2) {
+                            System.out.printf("%-8d", llistaTIS[i]);
+                            System.out.printf("%-20s", FEBRE_ALTA);
+                            switch (llistaExploracio[i]) {
+                                case 0:
+                                    System.out.printf("%-36s", PNEUMONIA);
+                                    break;
+                                case 1:
+                                    System.out.printf("%-36s", MENINGITIS);
+                                    break;
+                                case 2:
+                                    System.out.printf("%-36s", INFECCIO);
+                                    break;
+                                case 3:
+                                    System.out.printf("%-36s", ALERGIA);
+                                    break;
+                            }
+                            System.out.printf("%-20d", llistaPrioritat[i]);
+                            System.out.printf("%-20d", llistaTemperatura[i]);
+                            System.out.println();
+                        }
+                }
+
             } else if (numSimptoma == 3) {
                 System.out.println("Dades de pacients amb símptoma: " + CONFUSIO);
                 System.out.printf("%-7s %-19s %-19s %-19s %-19s", "TIS",
@@ -593,6 +621,15 @@ public class Projecte_Salut {
                 System.out.printf("%-7s %-19s %-19s %-19s %-19s", "------",
                         "------------------", "------------------", "------------------",
                         "------------------\n");
+                for (int i = 0; i < llistaPrioritat.length -1; i++) {
+                    for (int j = i + 1; j < llistaPrioritat.length; j++) {
+                        if (llistaPrioritat[i] < llistaPrioritat [j]) {
+                            int canvi = llistaPrioritat[i];
+                            llistaPrioritat[i] = llistaPrioritat[j];
+                            llistaPrioritat[j] = canvi;
+                        }
+                    }
+                }
                 for (int i = 0; i < numeroPacients; i++) {
                     if (llistaSimptoma[i] == 3) {
                         System.out.printf("%-8d", llistaTIS[i]);
