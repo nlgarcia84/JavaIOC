@@ -321,7 +321,7 @@ public class Projecte_Salut {
                                     do {
                                         intentsFets++;
                                         System.out.println(
-                                                "\nQuina es la seva temperatura actual en un rang entre " + MIN_TEMP + " i " + MAX_TEMP + " ?");
+                                                "\nQuina es la seva temperatura actual en un rang entre " + MIN_TEMP + " i " + MAX_TEMP + " graus?");
                                         isError = !entrada.hasNextInt();
                                         System.out.println();
                                         if (!isError) { // si es sencer seguim
@@ -343,7 +343,7 @@ public class Projecte_Salut {
                     }
                 }
 
-                if (isError && intentsFets != 3) {
+                if (isError && intentsFets < 3) {
                     System.out.println("Error en dades.");
                     entrada.nextLine();
                 } else if (isError && intentsFets == 3) {
@@ -523,219 +523,218 @@ public class Projecte_Salut {
                 }
             }
         }
-            if (respostaSimptoma == consultaSimptomaOK) {
-                System.out.println("Quin tipus de símptoma?");
-                System.out.println("  " + DOLOR + "(0)");
-                System.out.println("  " + LESIO_TRAUMATICA + "(1)");
-                System.out.println("  " + FEBRE_ALTA + "(2)");
-                System.out.println("  " + CONFUSIO + "(3)");
-                do {
-                    if (!entrada.hasNextInt()) {
+        if (respostaSimptoma == consultaSimptomaOK) {
+            System.out.println("Quin tipus de símptoma?");
+            System.out.println("  " + DOLOR + "(0)");
+            System.out.println("  " + LESIO_TRAUMATICA + "(1)");
+            System.out.println("  " + FEBRE_ALTA + "(2)");
+            System.out.println("  " + CONFUSIO + "(3)");
+            do {
+                if (!entrada.hasNextInt()) {
+                    System.out.println("Tipus incorrecte, torni a introduir");
+                    entrada.nextLine();
+                } else {
+                    numSimptoma = entrada.nextInt();
+                    if (numSimptoma < 0 || numSimptoma > 3) {
                         System.out.println("Tipus incorrecte, torni a introduir");
                         entrada.nextLine();
                     } else {
-                        numSimptoma = entrada.nextInt();
-                        if (numSimptoma < 0 || numSimptoma > 3) {
-                            System.out.println("Tipus incorrecte, torni a introduir");
-                            entrada.nextLine();
-                        } else {
-                            isError = false;
-                        }
+                        isError = false;
                     }
-                } while (isError || numSimptoma < 0 || numSimptoma > 3);
-                if (numSimptoma == 0) {
-                    System.out.println("Dades de pacients amb símptoma: " + DOLOR);
-                    System.out.printf("%-7s %-19s %-19s %-19s %-19s", "TIS",
-                            "Símptoma", "Exploració", "Nivell prioritat",
-                            "Temperatura actual\n");
-                    System.out.printf("%-7s %-19s %-19s %-19s %-19s", "------",
-                            "------------------", "------------------", "------------------",
-                            "------------------\n");
+                }
+            } while (isError || numSimptoma < 0 || numSimptoma > 3);
+            if (numSimptoma == 0) {
+                System.out.println("Dades de pacients amb símptoma: " + DOLOR);
+                System.out.printf("%-7s %-19s %-19s %-19s %-19s", "TIS",
+                        "Símptoma", "Exploració", "Nivell prioritat",
+                        "Temperatura actual\n");
+                System.out.printf("%-7s %-19s %-19s %-19s %-19s", "------",
+                        "------------------", "------------------", "------------------",
+                        "------------------\n");
 
-                    for (int i = 0; i < numeroPacients; i++) {
-                        if (llistaSimptoma[i] == 0) {
-                            System.out.printf("%-8d", llistaTIS[i]);
-                            System.out.printf("%-20s", DOLOR);
-                            switch (llistaExploracio[i]) {
-                                case 0:
-                                    System.out.printf("%-36s", TORACIC);
-                                    break;
-                                case 1:
-                                    System.out.printf("%-36s", ABDOMINAL);
-                                    break;
-                                case 2:
-                                    System.out.printf("%-36s", CAP);
-                                    break;
-                                case 3:
-                                    System.out.printf("%-36s", MIGRANYA);
-                                    break;
-                            }
-
-                            System.out.printf("%-20d", llistaPrioritat[i]);
-                            System.out.printf("%-20d", llistaTemperatura[i]);
-                            System.out.println();
+                for (int i = 0; i < numeroPacients; i++) {
+                    if (llistaSimptoma[i] == 0) {
+                        System.out.printf("%-8d", llistaTIS[i]);
+                        System.out.printf("%-20s", DOLOR);
+                        switch (llistaExploracio[i]) {
+                            case 0:
+                                System.out.printf("%-36s", TORACIC);
+                                break;
+                            case 1:
+                                System.out.printf("%-36s", ABDOMINAL);
+                                break;
+                            case 2:
+                                System.out.printf("%-36s", CAP);
+                                break;
+                            case 3:
+                                System.out.printf("%-36s", MIGRANYA);
+                                break;
                         }
 
+                        System.out.printf("%-20d", llistaPrioritat[i]);
+                        System.out.printf("%-20d", llistaTemperatura[i]);
+                        System.out.println();
                     }
-                } else if (numSimptoma == 1) {
-                    System.out.println("Dades de pacients amb símptoma: " + LESIO_TRAUMATICA);
-                    System.out.printf("%-7s %-19s %-19s %-19s %-19s", "TIS",
-                            "Símptoma", "Exploració", "Nivell prioritat",
-                            "Temperatura actual\n");
-                    System.out.printf("%-7s %-19s %-19s %-19s %-19s", "------",
-                            "------------------", "------------------", "------------------",
-                            "------------------\n");
 
-                    for (int i = 0; i < numeroPacients; i++) {
-                        if (llistaSimptoma[i] == 1) {
-                            System.out.printf("%-8d", llistaTIS[i]);
-                            System.out.printf("%-20s", LESIO_TRAUMATICA);
-                            switch (llistaExploracio[i]) {
-                                case 0:
-                                    System.out.printf("%-36s", OSSIA);
-                                    break;
-                                case 1:
-                                    System.out.printf("%-36s", BALA);
-                                    break;
-                                case 2:
-                                    System.out.printf("%-36s", CREMADA);
-                                    break;
-                                case 3:
-                                    System.out.printf("%-36s", CEREBRAL);
-                                    break;
-                            }
-                            System.out.printf("%-20d", llistaPrioritat[i]);
-                            System.out.printf("%-20d", llistaTemperatura[i]);
-                            System.out.println();
+                }
+            } else if (numSimptoma == 1) {
+                System.out.println("Dades de pacients amb símptoma: " + LESIO_TRAUMATICA);
+                System.out.printf("%-7s %-19s %-19s %-19s %-19s", "TIS",
+                        "Símptoma", "Exploració", "Nivell prioritat",
+                        "Temperatura actual\n");
+                System.out.printf("%-7s %-19s %-19s %-19s %-19s", "------",
+                        "------------------", "------------------", "------------------",
+                        "------------------\n");
+
+                for (int i = 0; i < numeroPacients; i++) {
+                    if (llistaSimptoma[i] == 1) {
+                        System.out.printf("%-8d", llistaTIS[i]);
+                        System.out.printf("%-20s", LESIO_TRAUMATICA);
+                        switch (llistaExploracio[i]) {
+                            case 0:
+                                System.out.printf("%-36s", OSSIA);
+                                break;
+                            case 1:
+                                System.out.printf("%-36s", BALA);
+                                break;
+                            case 2:
+                                System.out.printf("%-36s", CREMADA);
+                                break;
+                            case 3:
+                                System.out.printf("%-36s", CEREBRAL);
+                                break;
                         }
-
+                        System.out.printf("%-20d", llistaPrioritat[i]);
+                        System.out.printf("%-20d", llistaTemperatura[i]);
+                        System.out.println();
                     }
 
-                } else if (numSimptoma == 2) {
-                    System.out.println("Dades de pacients amb símptoma: " + FEBRE_ALTA);
-                    System.out.printf("%-7s %-19s %-19s %-19s %-19s", "TIS",
-                            "Símptoma", "Exploració", "Nivell prioritat",
-                            "Temperatura actual\n");
-                    System.out.printf("%-7s %-19s %-19s %-19s %-19s", "------",
-                            "------------------", "------------------", "------------------",
-                            "------------------\n");
+                }
 
-                    for (int i = 0; i < numeroPacients; i++) {
-                        if (llistaSimptoma[i] == 2) {
-                            System.out.printf("%-8d", llistaTIS[i]);
-                            System.out.printf("%-20s", FEBRE_ALTA);
-                            switch (llistaExploracio[i]) {
-                                case 0:
-                                    System.out.printf("%-36s", PNEUMONIA);
-                                    break;
-                                case 1:
-                                    System.out.printf("%-36s", MENINGITIS);
-                                    break;
-                                case 2:
-                                    System.out.printf("%-36s", INFECCIO);
-                                    break;
-                                case 3:
-                                    System.out.printf("%-36s", ALERGIA);
-                                    break;
-                            }
-                            System.out.printf("%-20d", llistaPrioritat[i]);
-                            System.out.printf("%-20d", llistaTemperatura[i]);
-                            System.out.println();
+            } else if (numSimptoma == 2) {
+                System.out.println("Dades de pacients amb símptoma: " + FEBRE_ALTA);
+                System.out.printf("%-7s %-19s %-19s %-19s %-19s", "TIS",
+                        "Símptoma", "Exploració", "Nivell prioritat",
+                        "Temperatura actual\n");
+                System.out.printf("%-7s %-19s %-19s %-19s %-19s", "------",
+                        "------------------", "------------------", "------------------",
+                        "------------------\n");
+
+                for (int i = 0; i < numeroPacients; i++) {
+                    if (llistaSimptoma[i] == 2) {
+                        System.out.printf("%-8d", llistaTIS[i]);
+                        System.out.printf("%-20s", FEBRE_ALTA);
+                        switch (llistaExploracio[i]) {
+                            case 0:
+                                System.out.printf("%-36s", PNEUMONIA);
+                                break;
+                            case 1:
+                                System.out.printf("%-36s", MENINGITIS);
+                                break;
+                            case 2:
+                                System.out.printf("%-36s", INFECCIO);
+                                break;
+                            case 3:
+                                System.out.printf("%-36s", ALERGIA);
+                                break;
                         }
+                        System.out.printf("%-20d", llistaPrioritat[i]);
+                        System.out.printf("%-20d", llistaTemperatura[i]);
+                        System.out.println();
                     }
+                }
 
-                } else if (numSimptoma == 3) {
-                    System.out.println("Dades de pacients amb símptoma: " + CONFUSIO);
-                    System.out.printf("%-7s %-19s %-19s %-19s %-19s", "TIS",
-                            "Símptoma", "Exploració", "Nivell prioritat",
-                            "Temperatura actual\n");
-                    System.out.printf("%-7s %-19s %-19s %-19s %-19s", "------",
-                            "------------------", "------------------", "------------------",
-                            "------------------\n");
+            } else if (numSimptoma == 3) {
+                System.out.println("Dades de pacients amb símptoma: " + CONFUSIO);
+                System.out.printf("%-7s %-19s %-19s %-19s %-19s", "TIS",
+                        "Símptoma", "Exploració", "Nivell prioritat",
+                        "Temperatura actual\n");
+                System.out.printf("%-7s %-19s %-19s %-19s %-19s", "------",
+                        "------------------", "------------------", "------------------",
+                        "------------------\n");
 
-                    for (int i = 0; i < numeroPacients; i++) {
-                        if (llistaSimptoma[i] == 3) {
-                            System.out.printf("%-8d", llistaTIS[i]);
-                            System.out.printf("%-20s", CONFUSIO);
-                            switch (llistaExploracio[i]) {
-                                case 0:
-                                    System.out.printf("%-36s", INTOXICACIO);
-                                    break;
-                                case 1:
-                                    System.out.printf("%-36s", DESHIDRATACIO);
-                                    break;
-                                case 2:
-                                    System.out.printf("%-36s", ACCIDENT_CV);
-                                    break;
-                                case 3:
-                                    System.out.printf("%-36s", HIPOGLUCEMIA);
-                                    break;
-                            }
-                            System.out.printf("%-20d", llistaPrioritat[i]);
-                            System.out.printf("%-20d", llistaTemperatura[i]);
-                            System.out.println();
+                for (int i = 0; i < numeroPacients; i++) {
+                    if (llistaSimptoma[i] == 3) {
+                        System.out.printf("%-8d", llistaTIS[i]);
+                        System.out.printf("%-20s", CONFUSIO);
+                        switch (llistaExploracio[i]) {
+                            case 0:
+                                System.out.printf("%-36s", INTOXICACIO);
+                                break;
+                            case 1:
+                                System.out.printf("%-36s", DESHIDRATACIO);
+                                break;
+                            case 2:
+                                System.out.printf("%-36s", ACCIDENT_CV);
+                                break;
+                            case 3:
+                                System.out.printf("%-36s", HIPOGLUCEMIA);
+                                break;
                         }
-
+                        System.out.printf("%-20d", llistaPrioritat[i]);
+                        System.out.printf("%-20d", llistaTemperatura[i]);
+                        System.out.println();
                     }
 
+                }
+
+            }
+            System.out.println();
+
+            // Preguntem a l'usuari si vol un resum estadístic
+            System.out.println("Vols veure un resum estadístic de les dades? (si: 1/ no:0) ");
+            do {
+                if (!entrada.hasNextInt()) {
+                    System.out.println("Error de dades, contesti " + estadistiquesOK + " o " + estadistiquesKO);
+                } else {
+                    respostaEstadistiques = entrada.nextInt();
+                    if (respostaEstadistiques != 0 && respostaEstadistiques != 1) {
+                        System.out.println("Error de dades, contesti " + estadistiquesOK + " o " + estadistiquesKO);
+                        entrada.nextLine();
+                    } else {
+                        isError = false;
+                    }
+                }
+            } while (isError || respostaEstadistiques != 0 && respostaEstadistiques != 1);
+
+            // Tanquem la clase scanner perqué l'usuari no introduirá més dades
+            entrada.close();
+
+            // Treiem per pantalla el resum de les estadístiques dels pacients introduits
+            if (respostaEstadistiques == 1) {
+                System.out.println("Número de pacients introduïts: " + numeroPacients + "\n");
+                System.out.println("Número de pacients per símptomes:\n");
+                if (dolorComptador != 0) {
+                    System.out.println("\t" + DOLOR + " : " + dolorComptador);
+                }
+                if (ltComptador != 0) {
+                    System.out.println("\t" + LESIO_TRAUMATICA + " : " + ltComptador);
+                }
+                if (febreComptador != 0) {
+                    System.out.println("\t" + FEBRE_ALTA + " : " + febreComptador);
+                }
+                if (confusioComptador != 0) {
+                    System.out.println("\t" + CONFUSIO + " : " + confusioComptador);
                 }
                 System.out.println();
-
-                // Preguntem a l'usuari si vol un resum estadístic
-                System.out.println("Vols veure un resum estadístic de les dades? (si: 1/ no:0) ");
-                do {
-                    if (!entrada.hasNextInt()) {
-                        System.out.println("Error de dades, contesti " + estadistiquesOK + " o " + estadistiquesKO);
-                    } else {
-                        respostaEstadistiques = entrada.nextInt();
-                        if (respostaEstadistiques != 0 && respostaEstadistiques != 1) {
-                            System.out.println("Error de dades, contesti " + estadistiquesOK + " o " + estadistiquesKO);
-                            entrada.nextLine();
-                        } else {
-                            isError = false;
-                        }
-                    }
-                } while (isError || respostaEstadistiques != 0 && respostaEstadistiques != 1);
-
-                // Tanquem la clase scanner perqué l'usuari no introduirá més dades
-                entrada.close();
-
-                // Treiem per pantalla el resum de les estadístiques dels pacients introduits
-                if (respostaEstadistiques == 1) {
-                    System.out.println("Número de pacients introduïts: " + numeroPacients + "\n");
-                    System.out.println("Número de pacients per símptomes:\n");
-                    if (dolorComptador != 0) {
-                        System.out.println("\t" + DOLOR + " : " + dolorComptador);
-                    }
-                    if (ltComptador != 0) {
-                        System.out.println("\t" + LESIO_TRAUMATICA + " : " + ltComptador);
-                    }
-                    if (febreComptador != 0) {
-                        System.out.println("\t" + FEBRE_ALTA + " : " + febreComptador);
-                    }
-                    if (confusioComptador != 0) {
-                        System.out.println("\t" + CONFUSIO + " : " + confusioComptador);
-                    }
-                    System.out.println();
-                    System.out.println("Número de pacients per nivell de prioritat:\n");
-                    if (prioritat5Comptador != 0) {
-                        System.out.println("\tPrioritat 5: " + prioritat5Comptador);
-                    }
-                    if (prioritat4Comptador != 0) {
-                        System.out.println("\tPrioritat 4: " + prioritat4Comptador);
-                    }
-                    if (prioritat3Comptador != 0) {
-                        System.out.println("\tPrioritat 3: " + prioritat3Comptador);
-                    }
-                    if (prioritat2Comptador != 0) {
-                        System.out.println("\tPrioritat 2: " + prioritat2Comptador);
-                    }
-                    if (prioritat1Comptador != 0) {
-                        System.out.println("\tPrioritat 1: " + prioritat1Comptador);
-                    }
+                System.out.println("Número de pacients per nivell de prioritat:\n");
+                if (prioritat5Comptador != 0) {
+                    System.out.println("\tPrioritat 5: " + prioritat5Comptador);
+                }
+                if (prioritat4Comptador != 0) {
+                    System.out.println("\tPrioritat 4: " + prioritat4Comptador);
+                }
+                if (prioritat3Comptador != 0) {
+                    System.out.println("\tPrioritat 3: " + prioritat3Comptador);
+                }
+                if (prioritat2Comptador != 0) {
+                    System.out.println("\tPrioritat 2: " + prioritat2Comptador);
+                }
+                if (prioritat1Comptador != 0) {
+                    System.out.println("\tPrioritat 1: " + prioritat1Comptador);
                 }
             }
-
         }
-    }
 
+    }
+}
