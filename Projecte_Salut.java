@@ -102,7 +102,6 @@ public class Projecte_Salut {
                 intentsFets++;
                 // Demanem TIS
                 System.out.println("Si us plau, introdueixi el seu TIS.");
-
                 isError = !entrada.hasNextInt(); // si no es sencer registra
                 // error
                 if (!isError) {
@@ -359,12 +358,12 @@ public class Projecte_Salut {
             } while (isError && intentsFets < 3);
             // demanem si es vol introduir nou pacient a la bdd
 
-            System.out.println("\nVol introduir un altre pacient? Si(1),No(0)");
 
             // es sencer?
             do {
-                respostaNPcorrecte = entrada.hasNextInt();
-                if (respostaNPcorrecte) {
+                System.out.println("\nVol introduir un altre pacient? Si(1),No(0)");
+                entrada.nextLine();
+                if (entrada.hasNextInt()) {
                     // si es sencer mirem si está dins el rang
                     respostaNouPacient = entrada.nextInt();
                     // si diu que si sortim del bucle i pasem a entrar dades
@@ -381,11 +380,6 @@ public class Projecte_Salut {
                         System.out.println("Torni a introduir");
                         respostaNPcorrecte = false;
                     }
-                } else {
-                    // si fica un no sencer li tornem a demanar
-                    System.out.println("Torni a introduir");
-                    entrada.next();
-                    respostaNPcorrecte = false;
                 }
 
             } while (!respostaNPcorrecte);
